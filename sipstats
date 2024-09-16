@@ -73,6 +73,9 @@ for p in cap:
             if not ln.strip():
                 break
             parts = ln.split(":", 1)
+            # Fragmented packet may not have a full header
+            if len(parts) < 2:
+                break
             name = parts[0].strip().lower()
             val = parts[1].strip()
             headers[name] = val
